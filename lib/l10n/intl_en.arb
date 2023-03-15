@@ -1,0 +1,4 @@
+{
+    "namaAnda": "Your name",
+    "counterText": "{counter, plural, zero{not push any button} one{push one time} other{you pushed this button {counter} times.}}"
+}
