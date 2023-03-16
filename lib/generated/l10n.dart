@@ -120,6 +120,16 @@ class S {
     );
   }
 
+  /// `List of restaurant or cafe`
+  String get senaraiKedai {
+    return Intl.message(
+      'List of restaurant or cafe',
+      name: 'senaraiKedai',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `you can choose more than one`
   String get huraianArahan {
     return Intl.message(
@@ -205,6 +215,26 @@ class S {
     return Intl.message(
       'Rating',
       name: 'penilaian',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Hi`
+  String get aluan {
+    return Intl.message(
+      'Hi',
+      name: 'aluan',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `History of`
+  String get sejarah {
+    return Intl.message(
+      'History of',
+      name: 'sejarah',
       desc: '',
       args: [],
     );
