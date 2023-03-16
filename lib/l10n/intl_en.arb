@@ -6,6 +6,7 @@
     "masaMenu": "Meals",
     "namaMenu": "Menu",
     "senaraiMenu": "List of menu",
+    "senaraiKedai": "List of restaurant or cafe",
     "huraianArahan": "you can choose more than one",
     "sarapan": "Breakfast",
     "makanTengahari": "Lunch",
@@ -15,6 +16,8 @@
     "huraianPilihan": "Optional",
     "jumlah": "Total",
     "penilaian": "Rating",
+    "aluan": "Hi",
+    "sejarah": "History of",
 
     "b_laporkanPenilaian": "Report this rating",
     "b_kedaiTiada": "Restaurant not found in search?",

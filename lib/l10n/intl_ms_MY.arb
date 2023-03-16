@@ -6,6 +6,7 @@
     "masaMenu": "Masa menu",
     "namaMenu": "Nama menu",
     "senaraiMenu": "Senarai menu",
+    "senaraiKedai": "Senarai kedai",
     "huraianArahan": "boleh pilih lebih daripada satu",
     "sarapan": "Sarapan",
     "makanTengahari": "Makan tengahari",
@@ -15,6 +16,8 @@
     "huraianPilihan": "Pilihan",
     "jumlah": "Jumlah",
     "penilaian": "Penilaian",
+    "aluan": "Salam",
+    "sejarah": "Sejarah",
 
     "b_laporkanPenilaian": "Laporkan penilaian",
     "b_kedaiTiada": "Kedai tiada dalam carian?",
