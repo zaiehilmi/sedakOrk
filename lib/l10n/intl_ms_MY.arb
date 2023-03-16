@@ -1,17 +1,34 @@
 {
-    "penilaian": "Penilaian dan ulasan",
+    "penilaianDanUlasan": "Penilaian dan ulasan",
     "kawasan": "Kawasan",
     "namaKedai": "Nama Kedai",
     "tambahMenu": "Tambah Menu Baharu",
     "masaMenu": "Masa menu",
+    "namaMenu": "Nama menu",
+    "senaraiMenu": "Senarai menu",
     "huraianArahan": "boleh pilih lebih daripada satu",
-
-    "laporkanPenilaian": "Laporkan penilaian",
-    "kedaiTiada": "Kedai tiada dalam carian?",
-    "masuk": "Masuk",
     "sarapan": "Sarapan",
+    "makanTengahari": "Makan tengahari",
+    "makanMalam": "Makan Malam",
+    "kategori": "Kategori",
+    "harga": "Harga",
+    "huraianPilihan": "Pilihan",
+    "jumlah": "Jumlah",
+    "penilaian": "Penilaian",
+
+    "b_laporkanPenilaian": "Laporkan penilaian",
+    "b_kedaiTiada": "Kedai tiada dalam carian?",
+    "b_masuk": "Masuk",
+    "b_tambah": "Tambah",
+    "b_batal": "Batal",
+    "b_seterusnya": "Seterusnya",
+    "b_simpan": "Simpan",
+    "b_kongsi": "Kongsi",
     
-    "kodJemputan": "Kod jemputan",
-    "namaAnda": "Nama anda",
-    "cari": "Cari kedai makan"
+    "h_namaAnda": "Nama anda",
+    "h_kodJemputan": "Kod jemputan",
+    "h_cari": "Cari kedai makan",
+    "h_namaMenu": "Masukkan nama menu",
+    "h_harga": "Masukkan harga menu",
+    "h_penilaian": "Sepatah dua kata"
 }

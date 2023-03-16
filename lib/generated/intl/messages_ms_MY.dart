@@ -22,6 +22,41 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
-        "namaAnda": MessageLookupByLibrary.simpleMessage("Nama anda")
+        "b_batal": MessageLookupByLibrary.simpleMessage("Batal"),
+        "b_kedaiTiada":
+            MessageLookupByLibrary.simpleMessage("Kedai tiada dalam carian?"),
+        "b_kongsi": MessageLookupByLibrary.simpleMessage("Kongsi"),
+        "b_laporkanPenilaian":
+            MessageLookupByLibrary.simpleMessage("Laporkan penilaian"),
+        "b_masuk": MessageLookupByLibrary.simpleMessage("Masuk"),
+        "b_seterusnya": MessageLookupByLibrary.simpleMessage("Seterusnya"),
+        "b_simpan": MessageLookupByLibrary.simpleMessage("Simpan"),
+        "b_tambah": MessageLookupByLibrary.simpleMessage("Tambah"),
+        "h_cari": MessageLookupByLibrary.simpleMessage("Cari kedai makan"),
+        "h_harga": MessageLookupByLibrary.simpleMessage("Masukkan harga menu"),
+        "h_kodJemputan": MessageLookupByLibrary.simpleMessage("Kod jemputan"),
+        "h_namaAnda": MessageLookupByLibrary.simpleMessage("Nama anda"),
+        "h_namaMenu":
+            MessageLookupByLibrary.simpleMessage("Masukkan nama menu"),
+        "h_penilaian": MessageLookupByLibrary.simpleMessage("Sepatah dua kata"),
+        "harga": MessageLookupByLibrary.simpleMessage("Harga"),
+        "huraianArahan": MessageLookupByLibrary.simpleMessage(
+            "boleh pilih lebih daripada satu"),
+        "huraianPilihan": MessageLookupByLibrary.simpleMessage("Pilihan"),
+        "jumlah": MessageLookupByLibrary.simpleMessage("Jumlah"),
+        "kategori": MessageLookupByLibrary.simpleMessage("Kategori"),
+        "kawasan": MessageLookupByLibrary.simpleMessage("Kawasan"),
+        "makanMalam": MessageLookupByLibrary.simpleMessage("Makan Malam"),
+        "makanTengahari":
+            MessageLookupByLibrary.simpleMessage("Makan tengahari"),
+        "masaMenu": MessageLookupByLibrary.simpleMessage("Masa menu"),
+        "namaKedai": MessageLookupByLibrary.simpleMessage("Nama Kedai"),
+        "namaMenu": MessageLookupByLibrary.simpleMessage("Nama menu"),
+        "penilaian": MessageLookupByLibrary.simpleMessage("Penilaian"),
+        "penilaianDanUlasan":
+            MessageLookupByLibrary.simpleMessage("Penilaian dan ulasan"),
+        "sarapan": MessageLookupByLibrary.simpleMessage("Sarapan"),
+        "senaraiMenu": MessageLookupByLibrary.simpleMessage("Senarai menu"),
+        "tambahMenu": MessageLookupByLibrary.simpleMessage("Tambah Menu Baharu")
       };
 }

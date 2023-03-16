@@ -20,12 +20,44 @@ typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
 class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'en';
 
-  static String m0(counter) =>
-      "${Intl.plural(counter, zero: 'not push any button', one: 'push one time', other: 'you pushed this button ${counter} times.')}";
-
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
-        "counterText": m0,
-        "namaAnda": MessageLookupByLibrary.simpleMessage("Your name")
+        "b_batal": MessageLookupByLibrary.simpleMessage("Cancel"),
+        "b_kedaiTiada": MessageLookupByLibrary.simpleMessage(
+            "Restaurant not found in search?"),
+        "b_kongsi": MessageLookupByLibrary.simpleMessage("Share"),
+        "b_laporkanPenilaian":
+            MessageLookupByLibrary.simpleMessage("Report this rating"),
+        "b_masuk": MessageLookupByLibrary.simpleMessage("Login"),
+        "b_seterusnya": MessageLookupByLibrary.simpleMessage("Next"),
+        "b_simpan": MessageLookupByLibrary.simpleMessage("Save"),
+        "b_tambah": MessageLookupByLibrary.simpleMessage("Add"),
+        "h_cari":
+            MessageLookupByLibrary.simpleMessage("Search for a restaurant"),
+        "h_harga": MessageLookupByLibrary.simpleMessage("Enter menu price"),
+        "h_kodJemputan":
+            MessageLookupByLibrary.simpleMessage("Invitation code"),
+        "h_namaAnda": MessageLookupByLibrary.simpleMessage("Your name"),
+        "h_namaMenu": MessageLookupByLibrary.simpleMessage("Enter menu name"),
+        "h_penilaian":
+            MessageLookupByLibrary.simpleMessage("A few words of review"),
+        "harga": MessageLookupByLibrary.simpleMessage("Price"),
+        "huraianArahan": MessageLookupByLibrary.simpleMessage(
+            "you can choose more than one"),
+        "huraianPilihan": MessageLookupByLibrary.simpleMessage("Optional"),
+        "jumlah": MessageLookupByLibrary.simpleMessage("Total"),
+        "kategori": MessageLookupByLibrary.simpleMessage("Category"),
+        "kawasan": MessageLookupByLibrary.simpleMessage("Area"),
+        "makanMalam": MessageLookupByLibrary.simpleMessage("Dinner"),
+        "makanTengahari": MessageLookupByLibrary.simpleMessage("Lunch"),
+        "masaMenu": MessageLookupByLibrary.simpleMessage("Meals"),
+        "namaKedai": MessageLookupByLibrary.simpleMessage("Restaurant name"),
+        "namaMenu": MessageLookupByLibrary.simpleMessage("Menu"),
+        "penilaian": MessageLookupByLibrary.simpleMessage("Rating"),
+        "penilaianDanUlasan":
+            MessageLookupByLibrary.simpleMessage("Rating and review"),
+        "sarapan": MessageLookupByLibrary.simpleMessage("Breakfast"),
+        "senaraiMenu": MessageLookupByLibrary.simpleMessage("List of menu"),
+        "tambahMenu": MessageLookupByLibrary.simpleMessage("Add new menu")
       };
 }

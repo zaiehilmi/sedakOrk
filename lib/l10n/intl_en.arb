@@ -1,4 +1,34 @@
 {
-    "namaAnda": "Your name",
-    "counterText": "{counter, plural, zero{not push any button} one{push one time} other{you pushed this button {counter} times.}}"
+    "penilaianDanUlasan": "Rating and review",
+    "kawasan": "Area",
+    "namaKedai": "Restaurant name",
+    "tambahMenu": "Add new menu",
+    "masaMenu": "Meals",
+    "namaMenu": "Menu",
+    "senaraiMenu": "List of menu",
+    "huraianArahan": "you can choose more than one",
+    "sarapan": "Breakfast",
+    "makanTengahari": "Lunch",
+    "makanMalam": "Dinner",
+    "kategori": "Category",
+    "harga": "Price",
+    "huraianPilihan": "Optional",
+    "jumlah": "Total",
+    "penilaian": "Rating",
+
+    "b_laporkanPenilaian": "Report this rating",
+    "b_kedaiTiada": "Restaurant not found in search?",
+    "b_masuk": "Login",
+    "b_tambah": "Add",
+    "b_batal": "Cancel",
+    "b_seterusnya": "Next",
+    "b_simpan": "Save",
+    "b_kongsi": "Share",
+    
+    "h_namaAnda": "Your name",
+    "h_kodJemputan": "Invitation code",
+    "h_cari": "Search for a restaurant",
+    "h_namaMenu": "Enter menu name",
+    "h_harga": "Enter menu price",
+    "h_penilaian": "A few words of review"
 }
