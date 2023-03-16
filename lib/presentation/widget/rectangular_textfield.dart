@@ -1,9 +1,7 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 
 class RectangularTextfield extends StatelessWidget {
-  static const double textSize = 20;
+  static const double textSize = 23;
   String hint;
 
   RectangularTextfield({super.key, required this.hint});
@@ -22,11 +20,10 @@ class RectangularTextfield extends StatelessWidget {
           // ],
         ),
         child: TextField(
-          style: TextStyle(fontSize: textSize),
+          style: const TextStyle(fontSize: textSize, color: Colors.white70, fontWeight: FontWeight.bold,),
           decoration: InputDecoration(
             hintText: hint,
-            
-            hintStyle: TextStyle(fontSize: textSize),
+            hintStyle: const TextStyle(fontSize: textSize, fontWeight: FontWeight.normal),
             border: InputBorder.none,
             contentPadding: const EdgeInsets.symmetric(
               horizontal: 20.0,

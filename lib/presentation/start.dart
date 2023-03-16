@@ -18,61 +18,62 @@ class Start extends StatelessWidget {
     // MaterialButton(onPressed: () => setState(() {S.load(Locale("ms"));}),);
 
     return Scaffold(
+      resizeToAvoidBottomInset: true,
       body: SizedBox.expand(
         child: Container(
           decoration: const BoxDecoration(
+            image: DecorationImage(
+              image: ExactAssetImage(hamburger),
+              alignment: Alignment.bottomLeft,
+              scale: 1.2
+            ),
             gradient: LinearGradient(
               colors: [Color(0xFFED3939), Color(0xFFDE1A1A)],
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
             ),
           ),
-          child: Stack(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              Column(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.symmetric(
-                        vertical: 20, horizontal: 35),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          appTitle,
-                          style: GoogleFonts.passionOne(
-                            textStyle: const TextStyle(
-                                fontSize: 92,
-                                fontWeight: FontWeight.bold,
-                                height: 1.0,
-                                color: Colors.white),
-                          ),
-                        ),
-                        const SizedBox(height: 90),
-                        RectangularTextfield(
-                          hint: delegate.h_namaAnda,
-                        ),
-                        const SizedBox(height: 25),
-                        RectangularTextfield(
-                          hint: delegate.h_kodJemputan,
-                        ),
-                        const SizedBox(height: 40),
-                        Expanded(
-                          flex: 0,
-                          child: Center(
-                            child: Button(label: delegate.b_masuk),
-                          ),
-                        ),
-                      ],
+              Padding(
+                padding: const EdgeInsets.symmetric(
+                    vertical: 20, horizontal: 35),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      appTitle,
+                      style: GoogleFonts.passionOne(
+                        textStyle: const TextStyle(
+                            fontSize: 92,
+                            fontWeight: FontWeight.bold,
+                            height: 1.0,
+                            color: Colors.white),
+                      ),
                     ),
-                  ),
-                ],
+                    const SizedBox(height: 90),
+                    RectangularTextfield(
+                      hint: delegate.h_namaAnda,
+                    ),
+                    const SizedBox(height: 25),
+                    RectangularTextfield(
+                      hint: delegate.h_kodJemputan,
+                    ),
+                    const SizedBox(height: 40),
+                    Expanded(
+                      flex: 0,
+                      child: Center(
+                        child: Button(
+                          label: delegate.b_masuk,
+                          onPressed: () {},
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
               ),
-              Positioned(
-                bottom: 0,
-                left: 0,
-                child: Image.asset(hamburger),),
             ],
           ),
         ),

@@ -1,11 +1,14 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 
 class Button extends StatelessWidget {
   String label;
+  Function()? onPressed;
 
-  Button({super.key, required this.label});
+  Button({
+    super.key,
+    required this.label,
+    required this.onPressed,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -18,14 +21,14 @@ class Button extends StatelessWidget {
         borderRadius: BorderRadius.circular(8),
       ),
       child: TextButton(
-        onPressed: () {},
+        onPressed: onPressed,
         style: TextButton.styleFrom(
           splashFactory: NoSplash.splashFactory,
         ),
         child: Text(
           label,
           style: const TextStyle(
-            fontSize: 20,
+            fontSize: 23,
             fontWeight: FontWeight.w600,
             color: Color(0xff36382E),
           ),
