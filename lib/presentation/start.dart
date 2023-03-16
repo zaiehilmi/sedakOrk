@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:sedakork/generated/l10n.dart';
+import 'package:sedakork/presentation/widget/button.dart';
+import 'package:sedakork/presentation/widget/rectangular_textfield.dart';
+import 'package:sedakork/util/asset_constant.dart';
+import 'package:sedakork/util/string_constant.dart';
 
 class Start extends StatelessWidget {
   const Start({super.key});
@@ -11,33 +15,66 @@ class Start extends StatelessWidget {
     final locale = Localizations.localeOf(context);
 
     // ni contoh kalau nak tukar bahasa
-    // MaterialButton(onPressed: () => setState(() {S.load(Locale("my"));}),);
+    // MaterialButton(onPressed: () => setState(() {S.load(Locale("ms"));}),);
 
     return Scaffold(
       body: SizedBox.expand(
-        
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-
-            Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Text(
-                  'Sedak\nOrk',
-                  style: GoogleFonts.passionOne(
-                    textStyle: const TextStyle(
-                      fontSize: 87,
-                      fontWeight: FontWeight.bold,
+        child: Container(
+          decoration: const BoxDecoration(
+            gradient: LinearGradient(
+              colors: [Color(0xFFED3939), Color(0xFFDE1A1A)],
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+            ),
+          ),
+          child: Stack(
+            children: [
+              Column(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 20, horizontal: 35),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          appTitle,
+                          style: GoogleFonts.passionOne(
+                            textStyle: const TextStyle(
+                                fontSize: 92,
+                                fontWeight: FontWeight.bold,
+                                height: 1.0,
+                                color: Colors.white),
+                          ),
+                        ),
+                        const SizedBox(height: 90),
+                        RectangularTextfield(
+                          hint: delegate.h_namaAnda,
+                        ),
+                        const SizedBox(height: 25),
+                        RectangularTextfield(
+                          hint: delegate.h_kodJemputan,
+                        ),
+                        const SizedBox(height: 40),
+                        Expanded(
+                          flex: 0,
+                          child: Center(
+                            child: Button(label: delegate.b_masuk),
+                          ),
+                        ),
+                      ],
                     ),
                   ),
-                ),
-                Container(width: 100, child: TextField()),
-              ],
-            ),
-
-          ],
+                ],
+              ),
+              Positioned(
+                bottom: 0,
+                left: 0,
+                child: Image.asset(hamburger),),
+            ],
+          ),
         ),
       ),
     );

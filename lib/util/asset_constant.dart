@@ -1,0 +1,1 @@
+const hamburger = 'assets/image/hamburger.png';
