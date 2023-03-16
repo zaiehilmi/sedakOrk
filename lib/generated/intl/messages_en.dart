@@ -22,6 +22,7 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "aluan": MessageLookupByLibrary.simpleMessage("Hi"),
         "b_batal": MessageLookupByLibrary.simpleMessage("Cancel"),
         "b_kedaiTiada": MessageLookupByLibrary.simpleMessage(
             "Restaurant not found in search?"),
@@ -57,6 +58,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "penilaianDanUlasan":
             MessageLookupByLibrary.simpleMessage("Rating and review"),
         "sarapan": MessageLookupByLibrary.simpleMessage("Breakfast"),
+        "sejarah": MessageLookupByLibrary.simpleMessage("History of"),
+        "senaraiKedai":
+            MessageLookupByLibrary.simpleMessage("List of restaurant or cafe"),
         "senaraiMenu": MessageLookupByLibrary.simpleMessage("List of menu"),
         "tambahMenu": MessageLookupByLibrary.simpleMessage("Add new menu")
       };

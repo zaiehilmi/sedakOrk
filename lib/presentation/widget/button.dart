@@ -3,11 +3,13 @@ import 'package:flutter/material.dart';
 class Button extends StatelessWidget {
   String label;
   Function()? onPressed;
+  Color? color;
 
   Button({
     super.key,
     required this.label,
     required this.onPressed,
+    this.color,
   });
 
   @override
@@ -17,7 +19,7 @@ class Button extends StatelessWidget {
       height: 50,
       // margin: EdgeInsets.only(left: 118, top: 592),
       decoration: BoxDecoration(
-        color: const Color(0xFFFFBF69),
+        color: color ?? const Color(0xFFFFBF69),
         borderRadius: BorderRadius.circular(8),
       ),
       child: TextButton(

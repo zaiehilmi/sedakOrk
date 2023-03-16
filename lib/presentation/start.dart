@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:sedakork/generated/l10n.dart';
 import 'package:sedakork/presentation/widget/button.dart';
 import 'package:sedakork/presentation/widget/rectangular_textfield.dart';
 import 'package:sedakork/util/asset_constant.dart';
+import 'package:sedakork/util/custom_textstyle.dart' as cts;
+import 'package:sedakork/util/setting_constant.dart' as setting;
 import 'package:sedakork/util/string_constant.dart';
+// import ;
 
 class Start extends StatelessWidget {
   const Start({super.key});
@@ -37,21 +39,14 @@ class Start extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               Padding(
-                padding: const EdgeInsets.symmetric(
-                    vertical: 20, horizontal: 35),
+                padding: setting.padding,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
                       appTitle,
-                      style: GoogleFonts.passionOne(
-                        textStyle: const TextStyle(
-                            fontSize: 92,
-                            fontWeight: FontWeight.bold,
-                            height: 1.0,
-                            color: Colors.white),
-                      ),
+                      style: cts.title,
                     ),
                     const SizedBox(height: 90),
                     RectangularTextfield(
