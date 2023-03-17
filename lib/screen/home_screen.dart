@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:provider/provider.dart';
 import 'package:sedakork/generated/l10n.dart';
+import 'package:sedakork/screen/widget/card.dart';
+import 'package:sedakork/util/asset_constant.dart';
 import 'package:sedakork/util/custom_textstyle.dart' as cts;
 import 'package:sedakork/util/setting_constant.dart' as setting;
 import 'package:sedakork/service/location_provider.dart';
@@ -63,6 +65,18 @@ class _HomeState extends State<Home> {
               delegate.kedaiBerdekatan,
               style: cts.heading2,
             ),
+            const SizedBox(height: 10),
+            SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Row(
+                children: [
+                  ImageCard(imagePath: restoran, title: 'test'),
+                  ImageCard(imagePath: restoran, title: 'test'),
+                  ImageCard(imagePath: restoran, title: 'test'),
+                ],
+              ),
+            ),
+            const SizedBox(height: 10),
             Text(
               '${delegate.sejarah} ${delegate.penilaianDanUlasan.toLowerCase()}',
               style: cts.heading2,
