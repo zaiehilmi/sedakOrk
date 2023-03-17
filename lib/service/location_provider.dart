@@ -4,12 +4,13 @@ import 'package:geolocator/geolocator.dart';
 import 'package:sedakork/model/location_data.dart';
 
 class LocationProvider with ChangeNotifier {
-  Position? posisiSemasa;
-  String? lokasi;
-  DataLokasi? _dataLokasi;
-  Placemark? _place;
+  static Position? posisiSemasa;
+  static String? lokasi;
 
-  DataLokasi? get dataLokasi => _dataLokasi;
+  static DataLokasi? _dataLokasi;
+  static Placemark? _place;
+
+  static DataLokasi? get dataLokasi => _dataLokasi;
 
   semakLokasi() async {
     lokasi = null;

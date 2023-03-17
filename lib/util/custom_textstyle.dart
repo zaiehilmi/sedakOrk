@@ -13,7 +13,10 @@ TextStyle heading1 = GoogleFonts.passionOne(
   textStyle: const TextStyle(fontSize: 35),
 );
 
-TextStyle heading2 = GoogleFonts.roboto(
-  textStyle: const TextStyle(fontSize: 25, fontWeight: FontWeight.w600),
+TextStyle heading2 = GoogleFonts.inter(
+  textStyle: const TextStyle(fontSize: 21, fontWeight: FontWeight.w600),
 );
 
+TextStyle text = GoogleFonts.inter(
+  textStyle: const TextStyle(fontSize: 20)
+);

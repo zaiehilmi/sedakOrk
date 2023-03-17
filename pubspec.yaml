@@ -21,6 +21,7 @@ dependencies:
   provider: ^6.0.5
   location: ^4.4.0
   geolocator: ^9.0.2
+  fluro: ^2.0.5
 
 dev_dependencies:
   flutter_test:
