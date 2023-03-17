@@ -1,24 +1,34 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:sedakork/generated/l10n.dart';
-import 'package:sedakork/presentation/home.dart';
-import 'package:sedakork/presentation/start.dart';
+import 'package:sedakork/screen/home_screen.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:sedakork/service/location_provider.dart';
+import 'package:sedakork/service/screen_router.dart';
 
 Future<void> main() async {
   runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  @override
+  void initState() {
+    super.initState();
+    ScreenRouter.initRoutes();
+  }
 
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(
-            create: (_) => LocationProvider()),
+        ChangeNotifierProvider(create: (_) => LocationProvider()),
       ],
       child: MaterialApp(
         localizationsDelegates: const [
@@ -33,7 +43,9 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.blue,
           useMaterial3: true,
         ),
-        home: Home(),
+        // home: Home(),
+        initialRoute: '/',
+        onGenerateRoute: ScreenRouter.fluroRouter.generator,
       ),
     );
   }
