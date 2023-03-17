@@ -5,13 +5,11 @@ import 'package:sedakork/model/location_data.dart';
 
 class LocationProvider with ChangeNotifier {
   Position? posisiSemasa;
-  String? _poskod;
   String? lokasi;
+  DataLokasi? _dataLokasi;
+  Placemark? _place;
 
-  DataLokasi get dataLokasi => DataLokasi(
-        latitude: posisiSemasa?.latitude,
-        longitude: posisiSemasa?.longitude,
-      );
+  DataLokasi? get dataLokasi => _dataLokasi;
 
   semakLokasi() async {
     lokasi = null;
@@ -21,33 +19,55 @@ class LocationProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  getLokasi() async {
-    LocationPermission permission = await Geolocator.requestPermission();
-    
-    Geolocator.getCurrentPosition(
-      desiredAccuracy: LocationAccuracy.best,
-      // forceAndroidLocationManager: true,
-    ).then((Position position) {
-      posisiSemasa = position;
-      _getAddressFromLatLng();
+  setDataLokasi(Position pos) {
+    _getAddressFromLatLng(pos);
 
-      notifyListeners();
-    }).catchError((e) {
-      print(e);
-    });
+    _dataLokasi = DataLokasi(
+      latitude: pos.latitude,
+      longitude: pos.longitude,
+      area: _place?.locality,
+    );
+    // notifyListeners();
   }
 
-  _getAddressFromLatLng() async {
+  getLokasi() async {
+    // LocationPermission permission = await Geolocator.requestPermission();
+
+    if (await Geolocator.isLocationServiceEnabled()) {
+      var permission = await Geolocator.checkPermission();
+
+      if (permission == LocationPermission.denied) {
+        permission = await Geolocator.requestPermission();
+
+        if (permission == LocationPermission.denied) {
+          //todo handle nanti
+        }
+      }
+
+      Geolocator.getCurrentPosition(
+        desiredAccuracy: LocationAccuracy.reduced,
+      ).then((Position position) {
+        posisiSemasa = position;
+        setDataLokasi(position);
+        _getAddressFromLatLng(position);
+
+        notifyListeners();
+      }).catchError((e) {
+        print(e);
+      });
+    }
+  }
+
+  _getAddressFromLatLng(Position pos) async {
     try {
       List placemarks = await placemarkFromCoordinates(
-          posisiSemasa!.latitude, posisiSemasa!.longitude);
+        pos.latitude,
+        pos.longitude,
+      );
 
-      Placemark place = placemarks[0];
-      lokasi = place.locality;
+      _place = placemarks[0];
+
       notifyListeners();
-
-      _poskod = place.postalCode;
-      // print(lokasi);
     } catch (e) {
       print(e);
     }
