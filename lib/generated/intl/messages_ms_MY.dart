@@ -47,6 +47,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "jumlah": MessageLookupByLibrary.simpleMessage("Jumlah"),
         "kategori": MessageLookupByLibrary.simpleMessage("Kategori"),
         "kawasan": MessageLookupByLibrary.simpleMessage("Kawasan"),
+        "kedaiBerdekatan":
+            MessageLookupByLibrary.simpleMessage("Restoran & kafe berdekatan"),
         "makanMalam": MessageLookupByLibrary.simpleMessage("Makan Malam"),
         "makanTengahari":
             MessageLookupByLibrary.simpleMessage("Makan tengahari"),
@@ -58,7 +60,6 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Penilaian dan ulasan"),
         "sarapan": MessageLookupByLibrary.simpleMessage("Sarapan"),
         "sejarah": MessageLookupByLibrary.simpleMessage("Sejarah"),
-        "senaraiKedai": MessageLookupByLibrary.simpleMessage("Senarai kedai"),
         "senaraiMenu": MessageLookupByLibrary.simpleMessage("Senarai menu"),
         "tambahMenu": MessageLookupByLibrary.simpleMessage("Tambah Menu Baharu")
       };

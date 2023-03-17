@@ -120,11 +120,11 @@ class S {
     );
   }
 
-  /// `List of restaurant or cafe`
-  String get senaraiKedai {
+  /// `Restaurant & cafe nearby`
+  String get kedaiBerdekatan {
     return Intl.message(
-      'List of restaurant or cafe',
-      name: 'senaraiKedai',
+      'Restaurant & cafe nearby',
+      name: 'kedaiBerdekatan',
       desc: '',
       args: [],
     );
