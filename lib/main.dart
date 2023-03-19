@@ -1,12 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:sedakork/generated/l10n.dart';
-import 'package:sedakork/screen/home_screen.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:sedakork/service/location_provider.dart';
 import 'package:sedakork/service/screen_router.dart';
 
 Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown,
+  ]);
   runApp(const MyApp());
 }
 
@@ -43,7 +48,6 @@ class _MyAppState extends State<MyApp> {
           primarySwatch: Colors.blue,
           useMaterial3: true,
         ),
-        // home: Home(),
         initialRoute: '/',
         onGenerateRoute: ScreenRouter.fluroRouter.generator,
       ),
