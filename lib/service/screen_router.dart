@@ -8,19 +8,22 @@ class ScreenRouter {
 
   static initRoutes() {
     fluroRouter.define("/", handler: startScreenHandler);
-    fluroRouter.define("home", handler: homeScreenHandler);
+    fluroRouter.define(
+      "home",
+      handler: homeScreenHandler,
+      transitionType: TransitionType.cupertino,
+    );
   }
-  
+
   static var homeScreenHandler = Handler(
     handlerFunc: (BuildContext? context, Map<String, dynamic> params) {
-      return const Home();
+      return WillPopScope(child: const Home(), onWillPop: () async {return false;});
     },
   );
 
   static var startScreenHandler = Handler(
     handlerFunc: (BuildContext? context, Map<String, dynamic> params) {
-      return const Start();
+      return Start();
     },
   );
-
 }

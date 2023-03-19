@@ -20,3 +20,7 @@ TextStyle heading2 = GoogleFonts.inter(
 TextStyle text = GoogleFonts.inter(
   textStyle: const TextStyle(fontSize: 20)
 );
+
+TextStyle buttonText = GoogleFonts.inter(
+  textStyle: const TextStyle(fontSize: 15, fontWeight: FontWeight.w400, color: Colors.white),
+);
