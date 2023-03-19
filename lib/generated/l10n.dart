@@ -320,6 +320,16 @@ class S {
     );
   }
 
+  /// `Create new community`
+  String get b_ciptaKomuniti {
+    return Intl.message(
+      'Create new community',
+      name: 'b_ciptaKomuniti',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Your name`
   String get h_namaAnda {
     return Intl.message(
