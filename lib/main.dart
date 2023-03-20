@@ -1,3 +1,4 @@
+import 'package:dynamic_color/dynamic_color.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
@@ -23,6 +24,8 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  final defaultColor = const Color(0xFFDE1A1A);
+
   @override
   void initState() {
     super.initState();
@@ -31,26 +34,44 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    return MultiProvider(
-      providers: [
-        ChangeNotifierProvider(create: (_) => LocationProvider()),
-      ],
-      child: MaterialApp(
-        localizationsDelegates: const [
-          S.delegate,
-          GlobalMaterialLocalizations.delegate,
-          GlobalWidgetsLocalizations.delegate,
-          GlobalCupertinoLocalizations.delegate,
-        ],
-        supportedLocales: S.delegate.supportedLocales,
-        title: 'Flutter Demo',
-        theme: ThemeData(
-          primarySwatch: Colors.blue,
-          useMaterial3: true,
-        ),
-        initialRoute: '/',
-        onGenerateRoute: ScreenRouter.fluroRouter.generator,
-      ),
+    return DynamicColorBuilder(
+      builder: (lightDynamic, darkDynamic) {
+        ColorScheme lightColorScheme;
+        ColorScheme darkColorScheme;
+
+        if (lightDynamic != null && darkDynamic != null) {
+          lightColorScheme = lightDynamic.harmonized()..copyWith(secondary: defaultColor);
+          darkColorScheme = darkDynamic.harmonized();
+        } else {
+          lightColorScheme = ColorScheme.fromSeed(seedColor: defaultColor);
+          darkColorScheme = ColorScheme.fromSeed(seedColor: defaultColor, brightness: Brightness.dark);
+        }
+
+        return MultiProvider(
+          providers: [
+            ChangeNotifierProvider(create: (_) => LocationProvider()),
+          ],
+          child: MaterialApp(
+            localizationsDelegates: const [
+              S.delegate,
+              GlobalMaterialLocalizations.delegate,
+              GlobalWidgetsLocalizations.delegate,
+              GlobalCupertinoLocalizations.delegate,
+            ],
+            supportedLocales: S.delegate.supportedLocales,
+            title: 'Flutter Demo',
+            themeMode: ThemeMode.system,
+            darkTheme:ThemeData.dark(),
+            theme: ThemeData(
+              colorScheme: lightColorScheme,
+
+              useMaterial3: true,
+            ),
+            initialRoute: 'home',
+            onGenerateRoute: ScreenRouter.fluroRouter.generator,
+          ),
+        );
+      },
     );
   }
 }

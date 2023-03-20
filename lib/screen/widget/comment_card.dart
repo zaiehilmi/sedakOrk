@@ -13,6 +13,10 @@ class CommentCard extends StatelessWidget {
   double? price;
 
   var logger = Logger();
+  var cts = CustomTextStyle(
+    h3Color: const Color(0xff993955),
+    h4Color: Color.fromARGB(255, 68, 68, 68),
+  );
 
   CommentCard({
     super.key,
@@ -26,7 +30,9 @@ class CommentCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final delegate = S.of(context);
-    
+    final textTheme = Theme.of(context).textTheme;
+    // final colorTheme = Theme.of(context).
+
     return Container(
       width: double.infinity,
       child: Column(
@@ -34,12 +40,15 @@ class CommentCard extends StatelessWidget {
         children: [
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.end,
             children: [
               Text(
                 commenterName ?? '',
-                style: heading2,
+                style: textTheme.labelMedium,
+                // style: cts.heading4,
               ),
               PopupMenuButton(
+                offset: Offset.zero,
                 itemBuilder: (context) => <PopupMenuEntry<String>>[
                   PopupMenuItem<String>(
                     value: 'laporkan',
@@ -49,15 +58,31 @@ class CommentCard extends StatelessWidget {
                 onSelected: (value) {
                   logger.d('Pengguna menekan butang laporkan');
                 },
+                child: const Icon(
+                  Icons.more_vert_rounded,
+                  size: 16,
+                ),
               )
             ],
           ),
           Text(rating.toString()),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [Text(menuName!), Text(price.toString())],
+            children: [
+              Text(
+                menuName!,
+                style: textTheme.titleSmall!.copyWith(color: const Color(0xff993955)),
+              ),
+              Text(
+                'RM ${price.toString()}',
+                style: cts.text,
+              ),
+            ],
           ),
-          Text(review ?? ''),
+          Text(
+            review ?? '',
+            style: cts.text,
+          ),
           const Divider(),
         ],
       ),
