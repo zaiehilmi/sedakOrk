@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:logger/logger.dart';
 import 'package:sedakork/generated/l10n.dart';
+import 'package:sedakork/screen/widget/rating_star.dart';
 import 'package:sedakork/util/custom_textstyle.dart';
 
 class CommentCard extends StatelessWidget {
   String? commenterName;
-  int? rating;
+  double rating;
   String? menuName;
   String? review;
   double? price;
@@ -31,9 +30,9 @@ class CommentCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final delegate = S.of(context);
     final textTheme = Theme.of(context).textTheme;
-    // final colorTheme = Theme.of(context).
+    final colorTheme = Theme.of(context);
 
-    return Container(
+    return SizedBox(
       width: double.infinity,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -65,17 +64,23 @@ class CommentCard extends StatelessWidget {
               )
             ],
           ),
-          Text(rating.toString()),
+          RatingStar(
+            value: rating,
+            color: colorTheme.primaryColor,
+            unratedColor: colorTheme.disabledColor,
+          ),
+          // Text(rating.toString()),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
                 menuName!,
-                style: textTheme.titleSmall!.copyWith(color: const Color(0xff993955)),
+                style: textTheme.titleSmall!
+                    .copyWith(color: const Color(0xff993955)),
               ),
               Text(
                 'RM ${price.toString()}',
-                style: cts.text,
+                style: textTheme.bodyMedium,
               ),
             ],
           ),
