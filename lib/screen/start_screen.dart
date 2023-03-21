@@ -7,7 +7,7 @@ import 'package:sedakork/screen/widget/rectangular_textfield.dart';
 import 'package:sedakork/screen/widget/textButton.dart';
 import 'package:sedakork/service/location_provider.dart';
 import 'package:sedakork/util/asset_constant.dart';
-import 'package:sedakork/util/custom_textstyle.dart' as cts;
+import 'package:sedakork/util/custom_textstyle.dart';
 import 'package:sedakork/util/setting_constant.dart' as setting;
 import 'package:sedakork/util/string_constant.dart';
 
@@ -18,6 +18,7 @@ class Start extends StatelessWidget {
   static var invitationCode = TextEditingController();
 
   var logger = Logger();
+  var cts = CustomTextStyle();
 
   @override
   Widget build(BuildContext context) {
@@ -26,6 +27,7 @@ class Start extends StatelessWidget {
     final lp = Provider.of<LocationProvider>(context);
 
     bool isKeyboardShowing = setting.isKeyboardShowing(context);
+    final textTheme = Theme.of(context).textTheme;
     // ni contoh kalau nak tukar bahasa
     // MaterialButton(onPressed: () => setState(() {S.load(Locale("ms"));}),);
 

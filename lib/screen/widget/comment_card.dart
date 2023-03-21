@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
 import 'package:sedakork/generated/l10n.dart';
 import 'package:sedakork/screen/widget/rating_star.dart';
-import 'package:sedakork/util/custom_textstyle.dart';
 
 class CommentCard extends StatelessWidget {
   String? commenterName;
@@ -12,10 +11,6 @@ class CommentCard extends StatelessWidget {
   double? price;
 
   var logger = Logger();
-  var cts = CustomTextStyle(
-    h3Color: const Color(0xff993955),
-    h4Color: Color.fromARGB(255, 68, 68, 68),
-  );
 
   CommentCard({
     super.key,
@@ -30,7 +25,7 @@ class CommentCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final delegate = S.of(context);
     final textTheme = Theme.of(context).textTheme;
-    final colorTheme = Theme.of(context);
+    final colorTheme = Theme.of(context).colorScheme;
 
     return SizedBox(
       width: double.infinity,
@@ -43,15 +38,20 @@ class CommentCard extends StatelessWidget {
             children: [
               Text(
                 commenterName ?? '',
-                style: textTheme.labelMedium,
-                // style: cts.heading4,
+                style: textTheme.bodySmall?.copyWith(
+                  color: colorTheme.onBackground,
+                  fontWeight: FontWeight.w300,
+                ),
               ),
               PopupMenuButton(
                 offset: Offset.zero,
                 itemBuilder: (context) => <PopupMenuEntry<String>>[
                   PopupMenuItem<String>(
                     value: 'laporkan',
-                    child: Text(delegate.b_laporkanPenilaian),
+                    child: Text(
+                      delegate.b_laporkanPenilaian,
+                      style: textTheme.labelMedium,
+                    ),
                   ),
                 ],
                 onSelected: (value) {
@@ -64,29 +64,43 @@ class CommentCard extends StatelessWidget {
               )
             ],
           ),
+          const SizedBox(height: 5),
           RatingStar(
             value: rating,
-            color: colorTheme.primaryColor,
-            unratedColor: colorTheme.disabledColor,
+            color: colorTheme.secondary,
+            unratedColor: const Color.fromARGB(255, 209, 209, 209),
           ),
           // Text(rating.toString()),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Text(
                 menuName!,
-                style: textTheme.titleSmall!
-                    .copyWith(color: const Color(0xff993955)),
+                style:
+                    textTheme.titleMedium!.copyWith(color: colorTheme.primary),
               ),
-              Text(
-                'RM ${price.toString()}',
-                style: textTheme.bodyMedium,
+              Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.all(Radius.circular(3)),
+                  color: colorTheme.tertiaryContainer,
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 3),
+                  child: Text(
+                    'RM ${price.toString()}',
+                    style: textTheme.bodyMedium
+                        ?.copyWith(color: colorTheme.onTertiaryContainer),
+                  ),
+                ),
               ),
             ],
           ),
+          const SizedBox(height: 7),
           Text(
             review ?? '',
-            style: cts.text,
+            style:
+                textTheme.bodySmall?.copyWith(color: colorTheme.onBackground),
           ),
           const Divider(),
         ],

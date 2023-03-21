@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class RectangularTextfield extends StatelessWidget {
-  static const double textSize = 23;
+  static const double textSize = 15;
   String hint;
   TextEditingController controller;
 
