@@ -65,7 +65,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "sejarah": MessageLookupByLibrary.simpleMessage("History of"),
         "senaraiMenu": MessageLookupByLibrary.simpleMessage("List of menu"),
         "tambahMenu": MessageLookupByLibrary.simpleMessage("Add new menu"),
-        "tiadaData":
-            MessageLookupByLibrary.simpleMessage("You haven\'t make any rating")
+        "tiadaData": MessageLookupByLibrary.simpleMessage(
+            "No reviews yet. Start sharing your thoughts now!")
       };
 }

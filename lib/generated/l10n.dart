@@ -240,10 +240,10 @@ class S {
     );
   }
 
-  /// `You haven't make any rating`
+  /// `No reviews yet. Start sharing your thoughts now!`
   String get tiadaData {
     return Intl.message(
-      'You haven\'t make any rating',
+      'No reviews yet. Start sharing your thoughts now!',
       name: 'tiadaData',
       desc: '',
       args: [],

@@ -66,6 +66,6 @@ class MessageLookup extends MessageLookupByLibrary {
         "tambahMenu":
             MessageLookupByLibrary.simpleMessage("Tambah Menu Baharu"),
         "tiadaData": MessageLookupByLibrary.simpleMessage(
-            "Anda belum membuat apa-apa penilaian")
+            "Tiada ulasan lagi. Mula berkongsi pendapat anda sekarang!")
       };
 }

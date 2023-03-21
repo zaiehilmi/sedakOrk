@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
@@ -25,8 +26,10 @@ class NoData extends StatelessWidget {
             ),
             Text(
               delegate.tiadaData,
+              textAlign: TextAlign.center,
               style: textTheme.labelMedium?.copyWith(
-                color: colorTheme.tertiary,
+                color: CupertinoColors.label,
+
               ),
             ),
           ],
