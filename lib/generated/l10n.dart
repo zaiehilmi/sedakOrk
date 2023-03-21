@@ -240,6 +240,16 @@ class S {
     );
   }
 
+  /// `You haven't make any rating`
+  String get tiadaData {
+    return Intl.message(
+      'You haven\'t make any rating',
+      name: 'tiadaData',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Report this rating`
   String get b_laporkanPenilaian {
     return Intl.message(

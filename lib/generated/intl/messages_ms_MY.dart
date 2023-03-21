@@ -63,6 +63,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "sarapan": MessageLookupByLibrary.simpleMessage("Sarapan"),
         "sejarah": MessageLookupByLibrary.simpleMessage("Sejarah"),
         "senaraiMenu": MessageLookupByLibrary.simpleMessage("Senarai menu"),
-        "tambahMenu": MessageLookupByLibrary.simpleMessage("Tambah Menu Baharu")
+        "tambahMenu":
+            MessageLookupByLibrary.simpleMessage("Tambah Menu Baharu"),
+        "tiadaData": MessageLookupByLibrary.simpleMessage(
+            "Anda belum membuat apa-apa penilaian")
       };
 }
