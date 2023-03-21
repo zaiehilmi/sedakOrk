@@ -1,1 +1,1 @@
-const appTitle = "Sedak\nOrk";
+const appTitle = "Sedak Ork";

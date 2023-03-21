@@ -1,6 +1,7 @@
 import 'package:fluro/fluro.dart';
 import 'package:flutter/widgets.dart';
 import 'package:sedakork/screen/home_screen.dart';
+import 'package:sedakork/screen/search_screen.dart';
 import 'package:sedakork/screen/start_screen.dart';
 
 class ScreenRouter {
@@ -13,17 +14,31 @@ class ScreenRouter {
       handler: homeScreenHandler,
       transitionType: TransitionType.cupertino,
     );
+    fluroRouter.define(
+      'search',
+      handler: searchScreenHandler,
+      transitionType: TransitionType.material,
+    );
   }
 
   static var homeScreenHandler = Handler(
     handlerFunc: (BuildContext? context, Map<String, dynamic> params) {
-      return WillPopScope(child: const Home(), onWillPop: () async {return false;});
+      return WillPopScope(
+          child: const Home(),
+          onWillPop: () async {
+            return false;
+          });
     },
   );
 
   static var startScreenHandler = Handler(
     handlerFunc: (BuildContext? context, Map<String, dynamic> params) {
       return Start();
+    },
+  );
+  static var searchScreenHandler = Handler(
+    handlerFunc: (BuildContext? context, Map<String, dynamic> params) {
+      return SearchScreen();
     },
   );
 }

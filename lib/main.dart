@@ -6,6 +6,7 @@ import 'package:sedakork/generated/l10n.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:sedakork/service/location_provider.dart';
 import 'package:sedakork/service/screen_router.dart';
+import 'package:sedakork/util/string_constant.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -13,17 +14,17 @@ Future<void> main() async {
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown,
   ]);
-  runApp(const MyApp());
+  runApp(const SedakOrk());
 }
 
-class MyApp extends StatefulWidget {
-  const MyApp({super.key});
+class SedakOrk extends StatefulWidget {
+  const SedakOrk({super.key});
 
   @override
-  State<MyApp> createState() => _MyAppState();
+  State<SedakOrk> createState() => _SedakOrkState();
 }
 
-class _MyAppState extends State<MyApp> {
+class _SedakOrkState extends State<SedakOrk> {
   final defaultColor = const Color(0xFFDE1A1A);
 
   @override
@@ -36,16 +37,30 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return DynamicColorBuilder(
       builder: (lightDynamic, darkDynamic) {
+        //? define dark and light color scheme
         ColorScheme lightColorScheme;
         ColorScheme darkColorScheme;
 
         if (lightDynamic != null && darkDynamic != null) {
-          lightColorScheme = lightDynamic.harmonized()..copyWith(secondary: defaultColor);
+          lightColorScheme = lightDynamic.harmonized()
+            ..copyWith(secondary: defaultColor);
           darkColorScheme = darkDynamic.harmonized();
         } else {
           lightColorScheme = ColorScheme.fromSeed(seedColor: defaultColor);
-          darkColorScheme = ColorScheme.fromSeed(seedColor: defaultColor, brightness: Brightness.dark);
+          darkColorScheme = ColorScheme.fromSeed(
+              seedColor: defaultColor, brightness: Brightness.dark);
         }
+
+        //? get the current theme
+        ThemeMode themeMode = ThemeMode.system;
+        Brightness platformBrightness =
+            MediaQuery.platformBrightnessOf(context);
+        if (platformBrightness == Brightness.dark) {
+          themeMode = ThemeMode.dark;
+        } else if (platformBrightness == Brightness.light) {
+          themeMode = ThemeMode.light;
+        }
+        bool isLightMode = themeMode == ThemeMode.light;
 
         return MultiProvider(
           providers: [
@@ -59,12 +74,11 @@ class _MyAppState extends State<MyApp> {
               GlobalCupertinoLocalizations.delegate,
             ],
             supportedLocales: S.delegate.supportedLocales,
-            title: 'Flutter Demo',
-            themeMode: ThemeMode.system,
-            darkTheme:ThemeData.dark(),
+            title: appTitle,
+            themeMode: themeMode,
+            // darkTheme: ThemeData.dark(),
             theme: ThemeData(
-              colorScheme: lightColorScheme,
-
+              colorScheme: isLightMode ? lightColorScheme : darkColorScheme,
               useMaterial3: true,
             ),
             initialRoute: 'home',

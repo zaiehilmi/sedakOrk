@@ -8,6 +8,7 @@ import 'package:sedakork/screen/widget/image_card.dart';
 import 'package:sedakork/screen/widget/comment_card.dart';
 import 'package:sedakork/util/asset_constant.dart';
 import 'package:sedakork/util/custom_textstyle.dart';
+import 'package:sedakork/util/screen_constant.dart';
 import 'package:sedakork/util/setting_constant.dart' as setting;
 import 'package:sedakork/service/location_provider.dart';
 
@@ -58,6 +59,7 @@ class _HomeState extends State<Home> {
           IconButton(
             onPressed: () {
               lp.getLokasi();
+              Navigator.pushNamed(context, 'search');
             },
             icon: const Icon(Icons.search_rounded),
           ),
@@ -69,93 +71,108 @@ class _HomeState extends State<Home> {
           ),
         ],
       ),
-      body: SingleChildScrollView(
-        scrollDirection: Axis.vertical,
-        child: Padding(
-          padding: setting.padding,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                delegate.kedaiBerdekatan,
-                style: cts.heading2,
-              ),
-              const SizedBox(height: 10),
-              SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                child: Row(
-                  children: [
-                    ImageCard(
-                      imagePath: restoran,
-                      title: 'test',
-                      onTap: () => logger.d('Imej pertama ditekan'),
-                    ),
-                    ImageCard(imagePath: restoran, title: 'test'),
-                    ImageCard(imagePath: restoran, title: 'test'),
-                  ],
+      body: ScrollConfiguration(
+        behavior: const MaterialScrollBehavior(),
+        child: SingleChildScrollView(
+          scrollDirection: Axis.vertical,
+          child: Padding(
+            padding: setting.padding,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  delegate.kedaiBerdekatan,
+                  style: cts.heading2,
                 ),
-              ),
-              const SizedBox(height: 28),
-              Text(
-                '${delegate.sejarah} ${delegate.penilaianDanUlasan.toLowerCase()}',
-                style: cts.heading2,
-              ),
-              const SizedBox(height: 10),
-              //! tengok balik utk guna lokasi
-              // StreamBuilder<Position>(
-              //   stream: _positionStream,
-              //   builder: (context, snapshot) {
-              //     if (snapshot.hasError) {
-              //       return Text('Error: ${snapshot.error}');
-              //     }
-              //     if (!snapshot.hasData) {
-              //       return const CupertinoActivityIndicator();
-              //     }
-        
-              //     Position? position = snapshot.data;
-              //     lp.setDataLokasi(position!);
-              //     lp.getLokasi();
-              //     return Text(
-              //       LocationProvider.posisiSemasa == null
-              //           ? 'loading'
-              //           : LocationProvider.dataLokasi!.latitude.toString() +
-              //               (LocationProvider.dataLokasi!.area ?? 'kosong'),
-              //       style: cts.text,
-              //     );
-              //   },
-              // ),
-              CommentCard(
-                rating: 1.2,
-                menuName: 'Nasi Ayam',
-                commenterName: 'Yuta Okkotsu',
-                price: 34.5,
-                review: 'tak sedap',
-              ),
-              CommentCard(
-                rating: 4.7,
-                menuName: 'Nasi Ayam',
-                commenterName: 'Yuta Okkotsu',
-                price: 34.5,
-                review: 'tak sedap',
-              ),
-              CommentCard(
-                rating: 3.5,
-                menuName: 'Nasi Ayam',
-                commenterName: 'Yuta Okkotsu',
-                price: 34.5,
-                review: 'tak sedaptak sedaptak sedaptak sedaptak sedaptak sedaptak sedaptak sedaptak sedaptak sedap',
-              ),
-              CommentCard(
-                rating: 2,
-                menuName: 'Nasi Ayam',
-                commenterName: 'Yuta Okkotsu',
-                price: 34.5,
-                review: 'tak sedap',
-              ),
-              Text('data', style: textTheme.titleSmall,),
-              Text('data', style: textTheme.headline3,),
-            ],
+                const SizedBox(height: 10),
+                SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: Row(
+                    children: [
+                      ImageCard(
+                        imagePath: restoran,
+                        title: 'test',
+                        onTap: () => logger.d('Imej pertama ditekan'),
+                      ),
+                      ImageCard(imagePath: restoran, title: 'test'),
+                      ImageCard(imagePath: restoran, title: 'test'),
+                    ],
+                  ),
+                ),
+                const SizedBox(height: 28),
+                // todo buat filter
+                Text(
+                  '${delegate.sejarah} ${delegate.penilaianDanUlasan.toLowerCase()}',
+                  style: cts.heading2,
+                ),
+                const SizedBox(height: 10),
+                //! tengok balik utk guna lokasi
+                // StreamBuilder<Position>(
+                //   stream: _positionStream,
+                //   builder: (context, snapshot) {
+                //     if (snapshot.hasError) {
+                //       return Text('Error: ${snapshot.error}');
+                //     }
+                //     if (!snapshot.hasData) {
+                //       return const CupertinoActivityIndicator();
+                //     }
+
+                //     Position? position = snapshot.data;
+                //     lp.setDataLokasi(position!);
+                //     lp.getLokasi();
+                //     return Text(
+                //       LocationProvider.posisiSemasa == null
+                //           ? 'loading'
+                //           : LocationProvider.dataLokasi!.latitude.toString() +
+                //               (LocationProvider.dataLokasi!.area ?? 'kosong'),
+                //       style: cts.text,
+                //     );
+                //   },
+                // ),
+                CommentCard(
+                  implementation: Screen.history,
+                  rating: 4,
+                  menuName: 'Nasi Ayam',
+                  cafeName: 'Sg Golok',
+                  price: 34.5,
+                  review: 'tak sedap',
+                ),
+                CommentCard(
+                  implementation: Screen.history,
+                  rating: 4.7,
+                  menuName: 'Nasi Ayam',
+                  cafeName: 'KFC',
+                  price: 34.5,
+                  review: 'tak sedap',
+                ),
+                CommentCard(
+                  implementation: Screen.history,
+                  rating: 3.5,
+                  menuName: 'Nasi Ayam',
+                  cafeName: 'Family Mart',
+                  price: 34.5,
+                  review:
+                      'tak sedaptak sedaptak sedaptak sedaptak sedaptak sedaptak sedaptak sedaptak sedaptak sedap',
+                ),
+                CommentCard(
+                  implementation: Screen.history,
+                  rating: 2,
+                  menuName: 'Nasi Ayam',
+                  cafeName: 'Kedai Mamak',
+                  price: 34.5,
+                  review: 'tak sedap',
+                ),
+                CommentCard(
+                  implementation: Screen.history,
+                  rating: 2,
+                  menuName: 'Nasi Ayam',
+                  cafeName: 'Yuta Okkotsu',
+                  price: 34.5,
+                  review: 'tak sedap',
+                ),
+              ],
+            ),
           ),
         ),
       ),
