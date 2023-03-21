@@ -1,16 +1,15 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:logger/logger.dart';
 import 'package:provider/provider.dart';
-import 'package:sedakork/generated/l10n.dart';
 import 'package:sedakork/screen/widget/image_card.dart';
 import 'package:sedakork/screen/widget/comment_card.dart';
+import 'package:sedakork/screen/widget/no_data.dart';
 import 'package:sedakork/util/asset_constant.dart';
 import 'package:sedakork/util/custom_textstyle.dart';
 import 'package:sedakork/util/screen_constant.dart';
-import 'package:sedakork/util/setting_constant.dart' as setting;
 import 'package:sedakork/service/location_provider.dart';
+import 'package:sedakork/util/setting_constant.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -43,17 +42,13 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
-    final delegate = S.of(context);
     final lp = Provider.of<LocationProvider>(context);
-    final textTheme = Theme.of(context).textTheme;
-    final colorTheme = Theme.of(context);
 
     return Scaffold(
-      backgroundColor: colorTheme.scaffoldBackgroundColor,
       appBar: AppBar(
         centerTitle: false,
         elevation: 0,
-        title: Text('${delegate.aluan}, Auzaie', style: cts.heading1),
+        title: Text('${delegate(context).aluan}, Auzaie', style: cts.heading1),
         automaticallyImplyLeading: false,
         actions: [
           IconButton(
@@ -76,13 +71,13 @@ class _HomeState extends State<Home> {
         child: SingleChildScrollView(
           scrollDirection: Axis.vertical,
           child: Padding(
-            padding: setting.padding,
+            padding: padding,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  delegate.kedaiBerdekatan,
+                  delegate(context).kedaiBerdekatan,
                   style: cts.heading2,
                 ),
                 const SizedBox(height: 10),
@@ -103,7 +98,7 @@ class _HomeState extends State<Home> {
                 const SizedBox(height: 28),
                 // todo buat filter
                 Text(
-                  '${delegate.sejarah} ${delegate.penilaianDanUlasan.toLowerCase()}',
+                  '${delegate(context).sejarah} ${delegate(context).penilaianDanUlasan.toLowerCase()}',
                   style: cts.heading2,
                 ),
                 const SizedBox(height: 10),
@@ -130,6 +125,7 @@ class _HomeState extends State<Home> {
                 //     );
                 //   },
                 // ),
+                NoData(),
                 CommentCard(
                   implementation: Screen.history,
                   rating: 4,

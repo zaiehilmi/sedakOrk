@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
-import 'package:sedakork/generated/l10n.dart';
 import 'package:sedakork/screen/widget/rating_star.dart';
 import 'package:sedakork/util/screen_constant.dart';
+import 'package:sedakork/util/setting_constant.dart';
 
 class CommentCard extends StatelessWidget {
   String? commenterName;
@@ -28,10 +28,6 @@ class CommentCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final delegate = S.of(context);
-    final textTheme = Theme.of(context).textTheme;
-    final colorTheme = Theme.of(context).colorScheme;
-
     return SizedBox(
       width: double.infinity,
       child: Column(
@@ -41,15 +37,15 @@ class CommentCard extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
-              _textWidget(textTheme, colorTheme),
+              _textWidget(textTheme(context), colorScheme(context)),
               PopupMenuButton(
                 offset: Offset.zero,
                 itemBuilder: (context) => <PopupMenuEntry<String>>[
                   PopupMenuItem<String>(
                     value: 'laporkan',
                     child: Text(
-                      delegate.b_laporkanPenilaian,
-                      style: textTheme.labelMedium,
+                      delegate(context).b_laporkanPenilaian,
+                      style: textTheme(context).labelMedium,
                     ),
                   ),
                 ],
@@ -66,7 +62,7 @@ class CommentCard extends StatelessWidget {
           const SizedBox(height: 5),
           RatingStar(
             value: rating,
-            color: colorTheme.secondary,
+            color: colorScheme(context).secondary,
             unratedColor: const Color.fromARGB(255, 209, 209, 209),
           ),
           Row(
@@ -76,19 +72,19 @@ class CommentCard extends StatelessWidget {
               Text(
                 menuName!,
                 style:
-                    textTheme.titleMedium!.copyWith(color: colorTheme.primary),
+                    textTheme(context).titleMedium!.copyWith(color: colorScheme(context).primary),
               ),
               Container(
                 decoration: BoxDecoration(
                   borderRadius: const BorderRadius.all(Radius.circular(3)),
-                  color: colorTheme.tertiaryContainer,
+                  color: colorScheme(context).tertiaryContainer,
                 ),
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 3),
                   child: Text(
                     'RM ${price?.toStringAsFixed(2)}',
-                    style: textTheme.bodyMedium
-                        ?.copyWith(color: colorTheme.onTertiaryContainer),
+                    style: textTheme(context).bodyMedium
+                        ?.copyWith(color: colorScheme(context).onTertiaryContainer),
                   ),
                 ),
               ),
@@ -98,7 +94,7 @@ class CommentCard extends StatelessWidget {
           Text(
             review ?? '',
             style:
-                textTheme.bodySmall?.copyWith(color: colorTheme.onBackground),
+                textTheme(context).bodySmall?.copyWith(color: colorScheme(context).onBackground),
           ),
           const Divider(),
         ],

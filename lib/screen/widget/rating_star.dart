@@ -27,30 +27,4 @@ class RatingStar extends StatelessWidget {
         itemSize: 15,
         unratedColor: unratedColor,
       );
-  // ratingWidget: RatingWidget(
-  //   full: SvgPicture.asset(
-  //     bintang,
-  //     colorFilter: ColorFilter.mode(
-  //       color,
-  //       BlendMode.srcIn,
-  //     ),
-  //   ),
-  //   half: SvgPicture.asset(
-  //     bintangHalf,
-  //     colorFilter: ColorFilter.mode(
-  //       color,
-  //       BlendMode.srcIn,
-  //     ),
-  //   ),
-  //   empty: SvgPicture.asset(
-  //     bintangOutline,
-  //     colorFilter: ColorFilter.mode(
-  //       color,
-  //       BlendMode.srcIn,
-  //     ),
-  //   ),
-  // ),
-  // onRatingUpdate: (value) {
-  //   logger.d('nilai penilaian $value');
-  // });
 }

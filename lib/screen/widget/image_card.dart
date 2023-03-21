@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sedakork/util/setting_constant.dart';
 
 class ImageCard extends StatelessWidget {
   final String imagePath;
@@ -25,7 +26,7 @@ class ImageCard extends StatelessWidget {
           children: [
             Container(
               height: 200,
-              width: MediaQuery.of(context).size.width / 3,
+              width: deviceWidth(context) / 3,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(8.0),
                 image: DecorationImage(
@@ -36,7 +37,7 @@ class ImageCard extends StatelessWidget {
             ),
             Container(
               height: 200,
-              width: MediaQuery.of(context).size.width / 3,
+              width: deviceWidth(context) / 3,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(8.0),
                 gradient: LinearGradient(

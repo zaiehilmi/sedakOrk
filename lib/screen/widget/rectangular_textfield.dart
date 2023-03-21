@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sedakork/util/setting_constant.dart';
 
 class RectangularTextfield extends StatelessWidget {
   static const double textSize = 15;
@@ -18,8 +19,6 @@ class RectangularTextfield extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final colorTheme = Theme.of(context).colorScheme;
-
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
@@ -28,7 +27,7 @@ class RectangularTextfield extends StatelessWidget {
       child: TextField(
         style: TextStyle(
           fontSize: textSize,
-          color: textColor ?? colorTheme.onPrimaryContainer,
+          color: textColor ?? colorScheme(context).onPrimaryContainer,
           fontWeight: FontWeight.normal,
         ),
         decoration: InputDecoration(

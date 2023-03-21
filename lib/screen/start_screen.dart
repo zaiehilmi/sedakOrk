@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
 import 'package:provider/provider.dart';
-import 'package:sedakork/generated/l10n.dart';
 import 'package:sedakork/screen/widget/button.dart';
 import 'package:sedakork/screen/widget/rectangular_textfield.dart';
-import 'package:sedakork/screen/widget/textButton.dart';
+import 'package:sedakork/screen/widget/text_button.dart';
 import 'package:sedakork/service/location_provider.dart';
 import 'package:sedakork/util/asset_constant.dart';
 import 'package:sedakork/util/custom_textstyle.dart';
-import 'package:sedakork/util/setting_constant.dart' as setting;
+import 'package:sedakork/util/setting_constant.dart';
 import 'package:sedakork/util/string_constant.dart';
 
 class Start extends StatelessWidget {
@@ -22,12 +21,9 @@ class Start extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final delegate = S.of(context);
     final locale = Localizations.localeOf(context);
     final lp = Provider.of<LocationProvider>(context);
 
-    bool isKeyboardShowing = setting.isKeyboardShowing(context);
-    final textTheme = Theme.of(context).textTheme;
     // ni contoh kalau nak tukar bahasa
     // MaterialButton(onPressed: () => setState(() {S.load(Locale("ms"));}),);
 
@@ -36,7 +32,7 @@ class Start extends StatelessWidget {
       body: SizedBox.expand(
         child: Container(
           decoration: BoxDecoration(
-            image: !isKeyboardShowing
+            image: !isKeyboardShowing(context)
                 ? const DecorationImage(
                     image: ExactAssetImage(hamburger),
                     alignment: Alignment.bottomLeft,
@@ -53,7 +49,7 @@ class Start extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               Padding(
-                padding: setting.padding,
+                padding: padding,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -65,16 +61,20 @@ class Start extends StatelessWidget {
                     AnimatedPadding(
                       duration: const Duration(milliseconds: 300),
                       padding: EdgeInsets.symmetric(
-                          vertical: (!isKeyboardShowing) ? 40 : 20),
+                          vertical: (!isKeyboardShowing(context)) ? 40 : 20),
                     ),
                     RectangularTextfield(
                       controller: username,
-                      hint: delegate.h_namaAnda,
+                      hint: delegate(context).h_namaAnda,
+                      bgColor: const Color(0xFFF06449),
+                      textColor: Colors.white70,
                     ),
                     const SizedBox(height: 25),
                     RectangularTextfield(
                       controller: invitationCode,
-                      hint: delegate.h_kodJemputan,
+                      hint: delegate(context).h_kodJemputan,
+                      bgColor: const Color(0xFFF06449),
+                      textColor: Colors.white70,
                     ),
                     const SizedBox(height: 40),
                     Expanded(
@@ -83,7 +83,7 @@ class Start extends StatelessWidget {
                         child: Column(
                           children: [
                             CustomButton(
-                              label: delegate.b_masuk,
+                              label: delegate(context).b_masuk,
                               onPressed: () {
                                 logger.d('Mencuba melog masuk');
                                 logger.i(
@@ -95,13 +95,13 @@ class Start extends StatelessWidget {
                               duration: const Duration(milliseconds: 800),
                               curve: Curves.easeInOut,
                               margin: EdgeInsets.only(
-                                  bottom: isKeyboardShowing ? 10 : 40),
-                              child: !isKeyboardShowing
+                                  bottom: isKeyboardShowing(context) ? 10 : 40),
+                              child: !isKeyboardShowing(context)
                                   ? CustomTextButton(
                                       onPressed: () {
                                         logger.d('Mencipta komuniti baharu');
                                       },
-                                      label: delegate.b_ciptaKomuniti,
+                                      label: delegate(context).b_ciptaKomuniti,
                                     )
                                   : const SizedBox(height: 0),
                             )

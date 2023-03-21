@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sedakork/util/custom_textstyle.dart' as cts;
+import 'package:sedakork/util/custom_textstyle.dart';
 
 class CustomTextButton extends StatelessWidget {
   String label;
@@ -22,7 +22,7 @@ class CustomTextButton extends StatelessWidget {
       ),
       child: Text(
         label,
-        style: cts.buttonText
+        style: CustomTextStyle.buttonText,
       ),
     );
   }

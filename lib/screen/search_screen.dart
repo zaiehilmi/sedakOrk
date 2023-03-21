@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
-import 'package:sedakork/generated/l10n.dart';
 import 'package:sedakork/screen/widget/rectangular_textfield.dart';
 import 'package:sedakork/screen/widget/search_result.dart';
+import 'package:sedakork/util/setting_constant.dart';
 
 class SearchScreen extends StatefulWidget {
   const SearchScreen({super.key});
@@ -17,21 +15,17 @@ class _SearchScreenState extends State<SearchScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final delegate = S.of(context);
-    final textTheme = Theme.of(context).textTheme;
-    final colorTheme = Theme.of(context).colorScheme;
-
     return Scaffold(
-      backgroundColor: colorTheme.surface,
+      backgroundColor: colorScheme(context).surface,
       appBar: AppBar(
-        backgroundColor: colorTheme.primaryContainer,
+        backgroundColor: colorScheme(context).primaryContainer,
         title: RectangularTextfield(
-          hint: delegate.h_cari,
+          hint: delegate(context).h_cari,
           controller: search,
         ),
       ),
       body: ScrollConfiguration(
-        behavior: MaterialScrollBehavior(),
+        behavior: const MaterialScrollBehavior(),
         child: SingleChildScrollView(
           scrollDirection: Axis.vertical,
           child: Column(
