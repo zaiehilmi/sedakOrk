@@ -70,7 +70,6 @@ class CommentCard extends StatelessWidget {
             color: colorTheme.secondary,
             unratedColor: const Color.fromARGB(255, 209, 209, 209),
           ),
-          // Text(rating.toString()),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -82,13 +81,13 @@ class CommentCard extends StatelessWidget {
               ),
               Container(
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.all(Radius.circular(3)),
+                  borderRadius: const BorderRadius.all(Radius.circular(3)),
                   color: colorTheme.tertiaryContainer,
                 ),
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 3),
                   child: Text(
-                    'RM ${price.toString()}',
+                    'RM ${price?.toStringAsFixed(2)}',
                     style: textTheme.bodyMedium
                         ?.copyWith(color: colorTheme.onTertiaryContainer),
                   ),
