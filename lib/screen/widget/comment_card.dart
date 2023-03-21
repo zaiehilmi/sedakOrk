@@ -2,21 +2,26 @@ import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
 import 'package:sedakork/generated/l10n.dart';
 import 'package:sedakork/screen/widget/rating_star.dart';
+import 'package:sedakork/util/screen_constant.dart';
 
 class CommentCard extends StatelessWidget {
   String? commenterName;
+  String? cafeName;
   double rating;
   String? menuName;
   String? review;
   double? price;
+  Screen implementation;
 
   var logger = Logger();
 
   CommentCard({
     super.key,
     this.commenterName,
+    this.cafeName,
     required this.rating,
     required this.menuName,
+    required this.implementation,
     this.price,
     this.review,
   });
@@ -36,13 +41,7 @@ class CommentCard extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
-              Text(
-                commenterName ?? '',
-                style: textTheme.bodySmall?.copyWith(
-                  color: colorTheme.onBackground,
-                  fontWeight: FontWeight.w300,
-                ),
-              ),
+              _textWidget(textTheme, colorTheme),
               PopupMenuButton(
                 offset: Offset.zero,
                 itemBuilder: (context) => <PopupMenuEntry<String>>[
@@ -105,5 +104,26 @@ class CommentCard extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  Widget _textWidget(TextTheme textTheme, ColorScheme colorTheme) {
+    switch (implementation) {
+      case Screen.search:
+        return Text(
+          commenterName!,
+          style: textTheme.bodySmall?.copyWith(
+            color: colorTheme.onBackground,
+            fontWeight: FontWeight.w300,
+          ),
+        );
+      case Screen.history:
+        return Text(
+          cafeName!,
+          style: textTheme.bodySmall?.copyWith(
+            color: colorTheme.onBackground,
+            fontWeight: FontWeight.w300,
+          ),
+        );
+    }
   }
 }

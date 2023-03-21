@@ -1,5 +1,6 @@
 class DataKomen {
   String? commenter;
+  String? cafe;
   int rating;
   String menuName;
   double? price;
@@ -7,6 +8,7 @@ class DataKomen {
 
   DataKomen({
     this.commenter,
+    this.cafe,
     required this.rating,
     required this.menuName,
     this.price,
