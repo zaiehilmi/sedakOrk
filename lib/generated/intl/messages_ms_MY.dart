@@ -39,6 +39,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "h_harga": MessageLookupByLibrary.simpleMessage("Masukkan harga menu"),
         "h_kodJemputan": MessageLookupByLibrary.simpleMessage("Kod jemputan"),
         "h_namaAnda": MessageLookupByLibrary.simpleMessage("Nama anda"),
+        "h_namaKedai":
+            MessageLookupByLibrary.simpleMessage("Masukkan nama kedai"),
         "h_namaMenu":
             MessageLookupByLibrary.simpleMessage("Masukkan nama menu"),
         "h_penilaian": MessageLookupByLibrary.simpleMessage("Sepatah dua kata"),

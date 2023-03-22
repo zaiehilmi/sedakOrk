@@ -35,5 +35,6 @@
     "h_cari": "Search for a restaurant",
     "h_namaMenu": "Enter menu name",
     "h_harga": "Enter menu price",
-    "h_penilaian": "A few words of review"
+    "h_penilaian": "A few words of review",
+    "h_namaKedai": "Enter the restaurant name"
 }

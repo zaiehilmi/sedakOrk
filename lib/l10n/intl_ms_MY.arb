@@ -35,5 +35,6 @@
     "h_cari": "Cari kedai makan",
     "h_namaMenu": "Masukkan nama menu",
     "h_harga": "Masukkan harga menu",
-    "h_penilaian": "Sepatah dua kata"
+    "h_penilaian": "Sepatah dua kata",
+    "h_namaKedai": "Masukkan nama kedai"
 }

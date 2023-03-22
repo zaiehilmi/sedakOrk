@@ -8,6 +8,7 @@ class RectangularTextfield extends StatelessWidget {
   TextEditingController controller;
   Color? bgColor;
   Color? textColor;
+  bool outline;
 
   RectangularTextfield({
     super.key,
@@ -15,12 +16,14 @@ class RectangularTextfield extends StatelessWidget {
     required this.controller,
     this.bgColor,
     this.textColor,
+    this.outline = false,
   });
 
   @override
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
+        border: (outline) ? Border.all(color: colorScheme(context).outline): null,
         borderRadius: BorderRadius.circular(10),
         color: bgColor,
       ),
@@ -37,7 +40,7 @@ class RectangularTextfield extends StatelessWidget {
           border: InputBorder.none,
           contentPadding: const EdgeInsets.symmetric(
             horizontal: 20.0,
-            vertical: 16.0,
+            vertical: 14.0,
           ),
         ),
         controller: controller,

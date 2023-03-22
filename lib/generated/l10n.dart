@@ -399,6 +399,16 @@ class S {
       args: [],
     );
   }
+
+  /// `Enter the restaurant name`
+  String get h_namaKedai {
+    return Intl.message(
+      'Enter the restaurant name',
+      name: 'h_namaKedai',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
