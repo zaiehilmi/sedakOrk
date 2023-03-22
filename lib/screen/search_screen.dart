@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:sedakork/screen/widget/rectangular_textfield.dart';
 import 'package:sedakork/screen/widget/search_result.dart';
 import 'package:sedakork/util/setting_constant.dart';
@@ -11,7 +12,24 @@ class SearchScreen extends StatefulWidget {
 }
 
 class _SearchScreenState extends State<SearchScreen> {
+  bool _showFab = true;
+  late ScrollController _scrollController;
+
   static var search = TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+    _scrollController = ScrollController();
+    _scrollController.addListener(_handleScroll);
+  }
+
+  @override
+  void dispose() {
+    _scrollController.removeListener(_handleScroll);
+    _scrollController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -28,6 +46,7 @@ class _SearchScreenState extends State<SearchScreen> {
         behavior: const MaterialScrollBehavior(),
         child: SingleChildScrollView(
           scrollDirection: Axis.vertical,
+          controller: _scrollController,
           child: Column(
             children: [
               SearchResult(
@@ -50,6 +69,27 @@ class _SearchScreenState extends State<SearchScreen> {
           ),
         ),
       ),
+      floatingActionButton: _showFab
+          ? FloatingActionButton.extended(
+              label: Text(delegate(context).b_kedaiTiada),
+              onPressed: () {},
+            )
+          : null,
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
+  }
+
+  void _handleScroll() {
+    if (_scrollController.position.userScrollDirection ==
+        ScrollDirection.reverse) {
+      setState(() {
+        _showFab = false;
+      });
+    } else if (_scrollController.position.userScrollDirection ==
+        ScrollDirection.forward) {
+      setState(() {
+        _showFab = true;
+      });
+    }
   }
 }
