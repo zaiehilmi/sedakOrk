@@ -2,11 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
 import 'package:provider/provider.dart';
 import 'package:sedakork/screen/widget/button.dart';
-import 'package:sedakork/screen/widget/rectangular_textfield.dart';
+import 'package:sedakork/screen/widget/start_textfield.dart';
 import 'package:sedakork/screen/widget/text_button.dart';
 import 'package:sedakork/service/location_provider.dart';
 import 'package:sedakork/util/asset_constant.dart';
 import 'package:sedakork/util/custom_textstyle.dart';
+import 'package:sedakork/util/screen_constant.dart';
 import 'package:sedakork/util/setting_constant.dart';
 import 'package:sedakork/util/string_constant.dart';
 
@@ -63,14 +64,14 @@ class Start extends StatelessWidget {
                       padding: EdgeInsets.symmetric(
                           vertical: (!isKeyboardShowing(context)) ? 40 : 20),
                     ),
-                    RectangularTextfield(
+                    StartTextField(
                       controller: username,
                       hint: delegate(context).h_namaAnda,
                       bgColor: const Color(0xFFF06449),
                       textColor: Colors.white70,
                     ),
                     const SizedBox(height: 25),
-                    RectangularTextfield(
+                    StartTextField(
                       controller: invitationCode,
                       hint: delegate(context).h_kodJemputan,
                       bgColor: const Color(0xFFF06449),
@@ -88,7 +89,7 @@ class Start extends StatelessWidget {
                                 logger.d('Mencuba melog masuk');
                                 logger.i(
                                     'Berjaya mengesahkan kod jemputan (${invitationCode.text})');
-                                Navigator.pushNamed(context, 'home');
+                                Navigator.pushNamed(context, Screen.home.value);
                               },
                             ),
                             AnimatedContainer(

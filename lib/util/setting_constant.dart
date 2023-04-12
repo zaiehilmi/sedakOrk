@@ -9,5 +9,6 @@ TextTheme textTheme(BuildContext context) => Theme.of(context).textTheme;
 ColorScheme colorScheme(BuildContext context) => Theme.of(context).colorScheme;
 
 double deviceWidth(BuildContext context) => MediaQuery.of(context).size.width;
+double deviceHeight(BuildContext context) => MediaQuery.of(context).size.height;
 
 S delegate(BuildContext context) => S.of(context);

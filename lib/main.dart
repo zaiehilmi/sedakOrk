@@ -6,6 +6,7 @@ import 'package:sedakork/generated/l10n.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:sedakork/service/location_provider.dart';
 import 'package:sedakork/service/screen_router.dart';
+import 'package:sedakork/util/screen_constant.dart';
 import 'package:sedakork/util/string_constant.dart';
 
 Future<void> main() async {
@@ -52,6 +53,7 @@ class _SedakOrkState extends State<SedakOrk> {
         }
 
         //? get the current theme
+        // todo still tak jadi
         ThemeMode themeMode = ThemeMode.system;
         Brightness platformBrightness =
             MediaQuery.platformBrightnessOf(context);
@@ -76,12 +78,12 @@ class _SedakOrkState extends State<SedakOrk> {
             supportedLocales: S.delegate.supportedLocales,
             title: appTitle,
             themeMode: themeMode,
-            // darkTheme: ThemeData.dark(),
+            darkTheme: ThemeData.dark(),
             theme: ThemeData(
               colorScheme: isLightMode ? lightColorScheme : darkColorScheme,
               useMaterial3: true,
             ),
-            initialRoute: 'home',
+            initialRoute: Screen.start.value,
             onGenerateRoute: ScreenRouter.fluroRouter.generator,
           ),
         );

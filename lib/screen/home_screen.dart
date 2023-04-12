@@ -3,12 +3,11 @@ import 'package:geolocator/geolocator.dart';
 import 'package:logger/logger.dart';
 import 'package:provider/provider.dart';
 import 'package:sedakork/screen/widget/image_card.dart';
-import 'package:sedakork/screen/widget/comment_card.dart';
 import 'package:sedakork/screen/widget/no_data.dart';
 import 'package:sedakork/util/asset_constant.dart';
 import 'package:sedakork/util/custom_textstyle.dart';
-import 'package:sedakork/util/screen_constant.dart';
 import 'package:sedakork/service/location_provider.dart';
+import 'package:sedakork/util/screen_constant.dart';
 import 'package:sedakork/util/setting_constant.dart';
 
 class Home extends StatefulWidget {
@@ -54,7 +53,7 @@ class _HomeState extends State<Home> {
           IconButton(
             onPressed: () {
               lp.getLokasi();
-              Navigator.pushNamed(context, 'search');
+              Navigator.pushNamed(context, Screen.search.value);
             },
             icon: const Icon(Icons.search_rounded),
           ),
@@ -125,48 +124,48 @@ class _HomeState extends State<Home> {
                 //     );
                 //   },
                 // ),
-                NoData(),
-                CommentCard(
-                  implementation: Screen.history,
-                  rating: 4,
-                  menuName: 'Nasi Ayam',
-                  cafeName: 'Sg Golok',
-                  price: 34.5,
-                  review: 'tak sedap',
-                ),
-                CommentCard(
-                  implementation: Screen.history,
-                  rating: 4.7,
-                  menuName: 'Nasi Ayam',
-                  cafeName: 'KFC',
-                  price: 34.5,
-                  review: 'tak sedap',
-                ),
-                CommentCard(
-                  implementation: Screen.history,
-                  rating: 3.5,
-                  menuName: 'Nasi Ayam',
-                  cafeName: 'Family Mart',
-                  price: 34.5,
-                  review:
-                      'tak sedaptak sedaptak sedaptak sedaptak sedaptak sedaptak sedaptak sedaptak sedaptak sedap',
-                ),
-                CommentCard(
-                  implementation: Screen.history,
-                  rating: 2,
-                  menuName: 'Nasi Ayam',
-                  cafeName: 'Kedai Mamak',
-                  price: 34.5,
-                  review: 'tak sedap',
-                ),
-                CommentCard(
-                  implementation: Screen.history,
-                  rating: 2,
-                  menuName: 'Nasi Ayam',
-                  cafeName: 'Yuta Okkotsu',
-                  price: 34.5,
-                  review: 'tak sedap',
-                ),
+                const NoData(),
+                // CommentCard(
+                //   implementation: Screen.history,
+                //   rating: 4,
+                //   menuName: 'Nasi Ayam',
+                //   cafeName: 'Sg Golok',
+                //   price: 34.5,
+                //   review: 'tak sedap',
+                // ),
+                // CommentCard(
+                //   implementation: Screen.history,
+                //   rating: 4.7,
+                //   menuName: 'Nasi Ayam',
+                //   cafeName: 'KFC',
+                //   price: 34.5,
+                //   review: 'tak sedap',
+                // ),
+                // CommentCard(
+                //   implementation: Screen.history,
+                //   rating: 3.5,
+                //   menuName: 'Nasi Ayam',
+                //   cafeName: 'Family Mart',
+                //   price: 34.5,
+                //   review:
+                //       'tak sedaptak sedaptak sedaptak sedaptak sedaptak sedaptak sedaptak sedaptak sedaptak sedap',
+                // ),
+                // CommentCard(
+                //   implementation: Screen.history,
+                //   rating: 2,
+                //   menuName: 'Nasi Ayam',
+                //   cafeName: 'Kedai Mamak',
+                //   price: 34.5,
+                //   review: 'tak sedap',
+                // ),
+                // CommentCard(
+                //   implementation: Screen.history,
+                //   rating: 2,
+                //   menuName: 'Nasi Ayam',
+                //   cafeName: 'Yuta Okkotsu',
+                //   price: 34.5,
+                //   review: 'tak sedap',
+                // ),
               ],
             ),
           ),

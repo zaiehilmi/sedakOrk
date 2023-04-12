@@ -11,7 +11,7 @@ class CommentCard extends StatelessWidget {
   String? menuName;
   String? review;
   double? price;
-  Screen implementation;
+  Screen screenImpl;
 
   var logger = Logger();
 
@@ -21,7 +21,7 @@ class CommentCard extends StatelessWidget {
     this.cafeName,
     required this.rating,
     required this.menuName,
-    required this.implementation,
+    required this.screenImpl,
     this.price,
     this.review,
   });
@@ -71,8 +71,9 @@ class CommentCard extends StatelessWidget {
             children: [
               Text(
                 menuName!,
-                style:
-                    textTheme(context).titleMedium!.copyWith(color: colorScheme(context).primary),
+                style: textTheme(context)
+                    .titleMedium!
+                    .copyWith(color: colorScheme(context).primary),
               ),
               Container(
                 decoration: BoxDecoration(
@@ -83,8 +84,8 @@ class CommentCard extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(horizontal: 3),
                   child: Text(
                     'RM ${price?.toStringAsFixed(2)}',
-                    style: textTheme(context).bodyMedium
-                        ?.copyWith(color: colorScheme(context).onTertiaryContainer),
+                    style: textTheme(context).bodyMedium?.copyWith(
+                        color: colorScheme(context).onTertiaryContainer),
                   ),
                 ),
               ),
@@ -93,8 +94,9 @@ class CommentCard extends StatelessWidget {
           const SizedBox(height: 7),
           Text(
             review ?? '',
-            style:
-                textTheme(context).bodySmall?.copyWith(color: colorScheme(context).onBackground),
+            style: textTheme(context)
+                .bodySmall
+                ?.copyWith(color: colorScheme(context).onBackground),
           ),
           const Divider(),
         ],
@@ -103,7 +105,7 @@ class CommentCard extends StatelessWidget {
   }
 
   Widget _textWidget(TextTheme textTheme, ColorScheme colorTheme) {
-    switch (implementation) {
+    switch (screenImpl) {
       case Screen.search:
         return Text(
           commenterName!,
@@ -120,6 +122,8 @@ class CommentCard extends StatelessWidget {
             fontWeight: FontWeight.w300,
           ),
         );
+      default:
+        return const Text('eh, kosong!?');
     }
   }
 }

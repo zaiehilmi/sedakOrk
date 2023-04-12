@@ -1,22 +1,32 @@
 import 'package:fluro/fluro.dart';
 import 'package:flutter/widgets.dart';
 import 'package:sedakork/screen/home_screen.dart';
+import 'package:sedakork/screen/restaurantProfile_screen.dart';
 import 'package:sedakork/screen/search_screen.dart';
 import 'package:sedakork/screen/start_screen.dart';
+import 'package:sedakork/util/screen_constant.dart';
 
 class ScreenRouter {
   static FluroRouter fluroRouter = FluroRouter();
 
   static initRoutes() {
-    fluroRouter.define("/", handler: startScreenHandler);
     fluroRouter.define(
-      "home",
+      Screen.start.value,
+      handler: startScreenHandler,
+    );
+    fluroRouter.define(
+      Screen.home.value,
       handler: homeScreenHandler,
       transitionType: TransitionType.cupertino,
     );
     fluroRouter.define(
-      'search',
+      Screen.search.value,
       handler: searchScreenHandler,
+      transitionType: TransitionType.material,
+    );
+    fluroRouter.define(
+      Screen.restaurantProfile.value,
+      handler: restaurantProfileScreenHandler,
       transitionType: TransitionType.material,
     );
   }
@@ -39,6 +49,11 @@ class ScreenRouter {
   static var searchScreenHandler = Handler(
     handlerFunc: (BuildContext? context, Map<String, dynamic> params) {
       return SearchScreen();
+    },
+  );
+  static var restaurantProfileScreenHandler = Handler(
+    handlerFunc: (BuildContext? context, Map<String, dynamic> params) {
+      return RestaurantProfile();
     },
   );
 }
