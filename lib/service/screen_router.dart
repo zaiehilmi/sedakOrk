@@ -9,6 +9,7 @@ import 'package:sedakork/util/screen_constant.dart';
 class ScreenRouter {
   static FluroRouter fluroRouter = FluroRouter();
 
+  //! kena tambah dalam enum juga (util/screen_constant.dart)
   static initRoutes() {
     fluroRouter.define(
       Screen.start.value,

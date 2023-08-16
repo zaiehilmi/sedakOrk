@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:logger/logger.dart';
 import 'package:provider/provider.dart';
+import 'package:sedakork/mock/comment_data.mock.dart';
+import 'package:sedakork/screen/widget/comment_card.dart';
 import 'package:sedakork/screen/widget/image_card.dart';
 import 'package:sedakork/screen/widget/no_data.dart';
 import 'package:sedakork/util/asset_constant.dart';
@@ -21,7 +23,6 @@ class _HomeState extends State<Home> {
   late Stream<Position> _positionStream;
   final _lp = LocationProvider();
   var logger = Logger();
-  var cts = CustomTextStyle();
 
   @override
   void initState() {
@@ -47,7 +48,8 @@ class _HomeState extends State<Home> {
       appBar: AppBar(
         centerTitle: false,
         elevation: 0,
-        title: Text('${delegate(context).aluan}, Auzaie', style: cts.heading1),
+        title: Text('${delegate(context).aluan}, Auzaie',
+            style: CustomTextStyle.heading1),
         automaticallyImplyLeading: false,
         actions: [
           IconButton(
@@ -67,107 +69,81 @@ class _HomeState extends State<Home> {
       ),
       body: ScrollConfiguration(
         behavior: const MaterialScrollBehavior(),
-        child: SingleChildScrollView(
-          scrollDirection: Axis.vertical,
-          child: Padding(
-            padding: padding,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  delegate(context).kedaiBerdekatan,
-                  style: cts.heading2,
-                ),
-                const SizedBox(height: 10),
-                SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  child: Row(
-                    children: [
-                      ImageCard(
+        child: Padding(
+          padding: padding,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                delegate(context).kedaiBerdekatan,
+                style: CustomTextStyle.heading2,
+              ),
+              const SizedBox(height: 10),
+              SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Row(
+                  children: [
+                    Hero(
+                      tag: 'gambar-kedai',
+                      child: ImageCard(
                         imagePath: restoran,
                         title: 'test',
-                        onTap: () => logger.d('Imej pertama ditekan'),
+                        onTap: () {
+                          Navigator.pushNamed(
+                              context, Screen.restaurantProfile.value);
+                          logger.d('Imej pertama ditekan');
+                        },
                       ),
-                      ImageCard(imagePath: restoran, title: 'test'),
-                      ImageCard(imagePath: restoran, title: 'test'),
-                    ],
-                  ),
+                    ),
+                    ImageCard(imagePath: restoran, title: 'test'),
+                    ImageCard(imagePath: restoran, title: 'test'),
+                  ],
                 ),
-                const SizedBox(height: 28),
-                // todo buat filter
-                Text(
-                  '${delegate(context).sejarah} ${delegate(context).penilaianDanUlasan.toLowerCase()}',
-                  style: cts.heading2,
-                ),
-                const SizedBox(height: 10),
-                //! tengok balik utk guna lokasi
-                // StreamBuilder<Position>(
-                //   stream: _positionStream,
-                //   builder: (context, snapshot) {
-                //     if (snapshot.hasError) {
-                //       return Text('Error: ${snapshot.error}');
-                //     }
-                //     if (!snapshot.hasData) {
-                //       return const CupertinoActivityIndicator();
-                //     }
+              ),
+              const SizedBox(height: 28),
+              // todo buat filter
+              Text(
+                '${delegate(context).sejarah} ${delegate(context).penilaianDanUlasan.toLowerCase()}',
+                style: CustomTextStyle.heading2,
+              ),
+              const SizedBox(height: 10),
+              //! tengok balik utk guna lokasi
+              // StreamBuilder<Position>(
+              //   stream: _positionStream,
+              //   builder: (context, snapshot) {
+              //     if (snapshot.hasError) {
+              //       return Text('Error: ${snapshot.error}');
+              //     }
+              //     if (!snapshot.hasData) {
+              //       return const CupertinoActivityIndicator();
+              //     }
 
-                //     Position? position = snapshot.data;
-                //     lp.setDataLokasi(position!);
-                //     lp.getLokasi();
-                //     return Text(
-                //       LocationProvider.posisiSemasa == null
-                //           ? 'loading'
-                //           : LocationProvider.dataLokasi!.latitude.toString() +
-                //               (LocationProvider.dataLokasi!.area ?? 'kosong'),
-                //       style: cts.text,
-                //     );
-                //   },
-                // ),
-                const NoData(),
-                // CommentCard(
-                //   implementation: Screen.history,
-                //   rating: 4,
-                //   menuName: 'Nasi Ayam',
-                //   cafeName: 'Sg Golok',
-                //   price: 34.5,
-                //   review: 'tak sedap',
-                // ),
-                // CommentCard(
-                //   implementation: Screen.history,
-                //   rating: 4.7,
-                //   menuName: 'Nasi Ayam',
-                //   cafeName: 'KFC',
-                //   price: 34.5,
-                //   review: 'tak sedap',
-                // ),
-                // CommentCard(
-                //   implementation: Screen.history,
-                //   rating: 3.5,
-                //   menuName: 'Nasi Ayam',
-                //   cafeName: 'Family Mart',
-                //   price: 34.5,
-                //   review:
-                //       'tak sedaptak sedaptak sedaptak sedaptak sedaptak sedaptak sedaptak sedaptak sedaptak sedap',
-                // ),
-                // CommentCard(
-                //   implementation: Screen.history,
-                //   rating: 2,
-                //   menuName: 'Nasi Ayam',
-                //   cafeName: 'Kedai Mamak',
-                //   price: 34.5,
-                //   review: 'tak sedap',
-                // ),
-                // CommentCard(
-                //   implementation: Screen.history,
-                //   rating: 2,
-                //   menuName: 'Nasi Ayam',
-                //   cafeName: 'Yuta Okkotsu',
-                //   price: 34.5,
-                //   review: 'tak sedap',
-                // ),
-              ],
-            ),
+              //     Position? position = snapshot.data;
+              //     lp.setDataLokasi(position!);
+              //     lp.getLokasi();
+              //     return Text(
+              //       LocationProvider.posisiSemasa == null
+              //           ? 'loading'
+              //           : LocationProvider.dataLokasi!.latitude.toString() +
+              //               (LocationProvider.dataLokasi!.area ?? 'kosong'),
+              //       style: cts.text,
+              //     );
+              //   },
+              // ),
+              //
+              (komenTipu.isEmpty)
+                  ? const NoData()
+                  : Expanded(
+                      child: ListView.builder(
+                        itemCount: komenTipu.length,
+                        itemBuilder: (context, index) => CommentCard(
+                          dataKomen: komenTipu[index],
+                          screenImpl: Screen.history,
+                        ),
+                      ),
+                    ),
+            ],
           ),
         ),
       ),

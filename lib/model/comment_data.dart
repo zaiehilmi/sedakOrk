@@ -1,7 +1,7 @@
 class DataKomen {
   String? commenter;
   String? cafe;
-  int rating;
+  double rating;
   String menuName;
   double? price;
   String? comment;

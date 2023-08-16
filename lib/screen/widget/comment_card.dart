@@ -1,29 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
+import 'package:sedakork/model/comment_data.dart';
 import 'package:sedakork/screen/widget/rating_star.dart';
 import 'package:sedakork/util/screen_constant.dart';
 import 'package:sedakork/util/setting_constant.dart';
 
 class CommentCard extends StatelessWidget {
-  String? commenterName;
-  String? cafeName;
-  double rating;
-  String? menuName;
-  String? review;
-  double? price;
+  DataKomen dataKomen;
   Screen screenImpl;
 
   var logger = Logger();
 
   CommentCard({
     super.key,
-    this.commenterName,
-    this.cafeName,
-    required this.rating,
-    required this.menuName,
+    required this.dataKomen,
     required this.screenImpl,
-    this.price,
-    this.review,
   });
 
   @override
@@ -61,7 +52,7 @@ class CommentCard extends StatelessWidget {
           ),
           const SizedBox(height: 5),
           RatingStar(
-            value: rating,
+            value: dataKomen.rating,
             color: colorScheme(context).secondary,
             unratedColor: const Color.fromARGB(255, 209, 209, 209),
           ),
@@ -70,7 +61,7 @@ class CommentCard extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Text(
-                menuName!,
+                dataKomen.menuName,
                 style: textTheme(context)
                     .titleMedium!
                     .copyWith(color: colorScheme(context).primary),
@@ -83,7 +74,7 @@ class CommentCard extends StatelessWidget {
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 3),
                   child: Text(
-                    'RM ${price?.toStringAsFixed(2)}',
+                    'RM ${dataKomen.price?.toStringAsFixed(2)}',
                     style: textTheme(context).bodyMedium?.copyWith(
                         color: colorScheme(context).onTertiaryContainer),
                   ),
@@ -93,7 +84,7 @@ class CommentCard extends StatelessWidget {
           ),
           const SizedBox(height: 7),
           Text(
-            review ?? '',
+            dataKomen.comment ?? '',
             style: textTheme(context)
                 .bodySmall
                 ?.copyWith(color: colorScheme(context).onBackground),
@@ -108,7 +99,7 @@ class CommentCard extends StatelessWidget {
     switch (screenImpl) {
       case Screen.search:
         return Text(
-          commenterName!,
+          dataKomen.commenter!,
           style: textTheme.bodySmall?.copyWith(
             color: colorTheme.onBackground,
             fontWeight: FontWeight.w300,
@@ -116,7 +107,7 @@ class CommentCard extends StatelessWidget {
         );
       case Screen.history:
         return Text(
-          cafeName!,
+          dataKomen.cafe!,
           style: textTheme.bodySmall?.copyWith(
             color: colorTheme.onBackground,
             fontWeight: FontWeight.w300,
